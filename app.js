@@ -1,6 +1,6 @@
 var index = require('./routes/index');
 var users= require('./routes/users');
-var index = require('./routes/upload');
+var uploads= require('./routes/upload');
 
 app.use('/',index);
 app.use('/',users);
