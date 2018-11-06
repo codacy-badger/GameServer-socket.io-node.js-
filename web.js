@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app.js');
+var app = require('./app.js');
 var debug = require('debug')('kkd89:server');
 var http = require('http');
 
