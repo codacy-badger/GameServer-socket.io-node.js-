@@ -1,8 +1,25 @@
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var port = normalizePort(process.env.PORT || '8002');
 
-server.listen(80);
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+server.listen(port);
 // WARNING: app.listen(80) will NOT work here!
 
 app.get('/', function (req, res) {
