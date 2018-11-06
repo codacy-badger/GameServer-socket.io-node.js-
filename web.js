@@ -6,8 +6,35 @@
 
 var app = require('./app.js');
 var debug = require('debug')('kkd89:server');
-var http = require('http');
+var http = require('http').createServer(handler);
+var io = require('socket.io').listen(http);
+var fs = require('fs');
 
+http.listen(8002);
+
+function handler(req,res)
+{
+  fs.readFile(__dirname + './index.html',
+  function(err,data)
+  {
+      if(err)
+      {
+        res.writeHead(500);
+        return res.end('Error loading index.html');
+      }
+      res.writeHead(200);
+      res.end(data);
+  });
+}
+
+io.sokets.on('connection',function(socket)
+{
+  socket.emit('news',{hello:'world'});
+  socket.on('my other event', function (data)
+  {
+      console.log(data);
+  });
+});
 /**
  * Get port from environment and store in Express.
  */
