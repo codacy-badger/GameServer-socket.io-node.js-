@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 
 let upload = multer({
-  dest: "upload/"
+  dest: "/home/hosting_users/kkd89/apps/kkd89_kkd89/upload/"
 })
 
 
