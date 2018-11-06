@@ -27,7 +27,7 @@ function handler(req,res)
   });
 }
 
-io.sokets.on('connection',function(socket)
+io.socket.on('connection',function(socket)
 {
   socket.emit('news',{hello:'world'});
   socket.on('my other event', function (data)
