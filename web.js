@@ -39,7 +39,7 @@ var router = null;
 
 function Main()
 {
-  var defaultConfigFile = 'ServerConfig.json';
+  var defaultConfigFile = path.join(__dirname + '/ServerConfig.json');
   var info = fs.readFileSync(defaultConfigFile,'utf8');
   var config = JSON.parse(info);
 
