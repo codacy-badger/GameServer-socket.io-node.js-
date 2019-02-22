@@ -5,6 +5,7 @@ var util = require('util');
 var path = require('path');
 var async = require('async');
 var http = require('http');
+var web = requie('ws');
 var express = require('express');
 var app = express();
 
