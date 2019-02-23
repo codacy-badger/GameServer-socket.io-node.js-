@@ -36,12 +36,13 @@ function PrintServerInfo(config)
 var server = null;
 var io = null;
 var router = null;
+var config = null;
 
 function Main()
 {
   var defaultConfigFile = path.join(__dirname + '/ServerConfig.json');
   var info = fs.readFileSync(defaultConfigFile,'utf8');
-  var config = JSON.parse(info);
+  config = JSON.parse(info);
 
   PrintServerInfo(config);
 
@@ -67,3 +68,27 @@ function Main()
 }
 
 Main();
+
+router.on("C2S_TEST", function (socket, args, next)
+{
+    console.log('C2S_TEST');
+
+    var recvData = JSON.parse(args[1]);
+
+    var SendData = {
+        error : 0,
+        testInfo :
+        {
+          ip : recvData.testInfo.ip,
+          port : recvData.testInfo.port,
+          vertion : recvData.testInfo.version
+        }
+    };
+
+    SendData.testInfo.ip = config.ServerIP;
+    SendData.testInfo.port = config.ServerPort;
+    SendData.testInfo.version = config.Version;
+
+    socket.emit("S2C_TEST", JSON.stringify(SendData));
+
+});
