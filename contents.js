@@ -2,13 +2,13 @@ global.router = require('socket.io-events')();
 
 module.exports = function (server)
 {
-    module.exports.io = require('socket.io').listen(server);//생성된 http 서버를 socket.io 서버로 업그레이드
+    module.exports.io = require('socket.io')(server);//생성된 http 서버를 socket.io 서버로 업그레이드
     module.exports.io.use(global.router);
 }
 
 router.on("C2S_TEST", function (socket, args, next)
 {
-    console.log('C2S_TEST');
+    global.Print("[INFO][C2S_TEST] socket.id:" + socket.id + " ip:" + socket.remoteAddress);
 
     var recvData = JSON.parse(args[1]);
 
@@ -28,4 +28,9 @@ router.on("C2S_TEST", function (socket, args, next)
 
     socket.emit("S2C_TEST", JSON.stringify(SendData));
 
+});
+
+router.on("connection", function (socket)
+{
+    global.Print("[INFO][C2S_TEST] socket.id:" + socket.id + " ip:" + socket.remoteAddress);
 });
