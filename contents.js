@@ -2,7 +2,7 @@ global.router = require('socket.io-events')();
 
 module.exports = function (server)
 {
-    module.exports.io = require('socket.io').listen(server);
+    module.exports.io = require('socket.io').listen(server);//생성된 http 서버를 socket.io 서버로 업그레이드
     module.exports.io.use(global.router);
 }
 

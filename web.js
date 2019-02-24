@@ -41,12 +41,13 @@ function Main()
       function(callback)
       {
         server = http.createServer(app);//express사용하여 http 서버 생성
-        //io = require('socket.io')(server);//생성된 http 서버를 socket.io 서버로 업그레이드
         server.listen(config.ServerPort,function(){console.log('listening on :' + config.ServerPort);});
-        //router = require('socket.io-events')();
-        //io.use(router);
 
         require("./contents.js")(server);
+        //contents.js로 모듈화
+        //io = require('socket.io')(server);//생성된 http 서버를 socket.io 서버로 업그레이드
+        //router = require('socket.io-events')();
+        //io.use(router);
 
         callback();
       },
