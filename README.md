@@ -1,5 +1,21 @@
-# GameServer-socket.io-node.js-
+# [Unity 채팅 프로그램 - 서버]
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/52caa1b966df4e51abebd05de05a32a8)](https://app.codacy.com/app/gaebhi/GameServer-socket.io-node.js-?utm_source=github.com&utm_medium=referral&utm_content=gaebhi/GameServer-socket.io-node.js-&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0402ffbd42154c1eaa7256337ebe56f4)](https://app.codacy.com/app/gaebhi/Client-Unity-?utm_source=github.com&utm_medium=referral&utm_content=gaebhi/Client-Unity-&utm_campaign=Badge_Grade_Dashboard)
 
-Server / node.js / socket.io / Unity / Http
+## 1.설명
+* 간단한 채팅 프로그램
+
+* Client : Unity 2017+
+* Assets : Best HTTP
+
+* Server : node.js v10.13.0
+* Module : socket.io
+
+* Hosting : cafe24
+
+
+## 2. 이미지
+![screenshot_01](https://i9.ytimg.com/vi/pXpIuAogd6Q/mq3.jpg?sqp=CIztrOkF&rs=AOn4CLAuhu0v4tS53tUsZ9VjEcFWvLU7yA "screenshot_01")
+
+## 3. 링크
+* [Video link](https://youtu.be/pXpIuAogd6Q "link")
