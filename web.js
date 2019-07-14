@@ -43,8 +43,6 @@ function Main()
         server = http.createServer(app);//express사용하여 http 서버 생성
         server.listen(config.ServerPort,function(){console.log('listening on :' + config.ServerPort);});
 
-        //require("./contents.js")(server);
-        //contents.js로 모듈화
         io = require('socket.io')(server);//생성된 http 서버를 socket.io 서버로 업그레이드
         router = require('socket.io-events')();
         io.use(router);
@@ -93,6 +91,24 @@ router.on("CLIENT_TO_SERVER_LOGIN", function (socket, args, next)
         }
     };
 	
-	global.Print("[INFO][CLIENT_TO_SERVER_CHAT]\nsocket.id:" + socket.id + "\nid:" + recvData._chatInfo.uniqueID + "\nmsg:" + recvData._chatInfo.msg + "\ntime:" + recvData._chatInfo.time);
+	global.Print("[INFO][CLIENT_TO_SERVER_LOGIN]\nsocket.id:" + socket.id + "\nid:" + recvData._chatInfo.uniqueID + "\nmsg:" + recvData._chatInfo.msg + "\ntime:" + recvData._chatInfo.time);
 	io.emit("SERVER_TO_CLIENT_LOGIN", JSON.stringify(SendData));
+});
+
+router.on("CLIENT_TO_SERVER_LOGOUT", function (socket, args, next)
+{
+    var recvData = JSON.parse(args[1]);
+
+    var SendData = {
+        error : 0,
+        _chatInfo :
+        {
+          uniqueID : recvData._chatInfo.uniqueID,
+          msg : recvData._chatInfo.msg,
+          time : recvData._chatInfo.time
+        }
+    };
+	
+	global.Print("[INFO][CLIENT_TO_SERVER_LOGOUT]\nsocket.id:" + socket.id + "\nid:" + recvData._chatInfo.uniqueID + "\nmsg:" + recvData._chatInfo.msg + "\ntime:" + recvData._chatInfo.time);
+	io.emit("SERVER_TO_CLIENT_LOGOUT", JSON.stringify(SendData));
 });
